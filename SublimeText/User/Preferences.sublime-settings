@@ -1,0 +1,41 @@
+// Settings in here override those in "Default/Preferences.sublime-settings",
+// and are overridden in turn by syntax-specific settings.
+{
+	"color_scheme": "Packages/User/One Dark Pro.tmTheme",
+	"font_face": "mononoki",
+	"font_size": 13.5,
+	"font_options":
+	[
+		"no_bold",
+		"no_italic"
+	],
+
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+
+	"tab_size": 4,
+	"hot_exit": true,
+	"word_wrap": false,
+	"spell_check": false,
+	"update_check": false,
+	"show_encoding": true,
+	"auto_complete": true,
+	"show_full_path": true,
+	"highlight_line": true,
+	"scroll_past_end": true,
+	"auto_complete_delay": 10,
+	"bold_folder_labels": true,
+	"shift_tab_unindent": true,
+	"save_on_focus_lost": true,
+	"open_files_in_new_window": false,
+	"ensure_newline_at_eof_on_save": true,
+	"trim_trailing_white_space_on_save": true,
+
+	"caret_style": "phase",
+	"default_encoding": "UTF-8",
+	"default_line_ending": "unix",
+}
+
+
