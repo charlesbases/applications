@@ -38,18 +38,6 @@ windows_alias_uninstall() {
 }
 
 
-go_install() {
-  if [[ "$GOHOME" ]]; then return; fi
-
-  echo -e "\033[32mgo installing...\033[0m"
-
-  # install
-  curl -s -L "https://dl.google.com/go/go${GO_VERSION}.windows-amd64.msi" --output "go${GO_VERSION}.msi"
-  ./start.bat "go${GO_VERSION}.msi"
-  rm -rf "go${GO_VERSION}.msi"
-}
-
-
 # 添加 windows 系统变量
 # $1: key
 # $2: value
@@ -82,7 +70,7 @@ configure_windows() {
 }
 
 
-configure_gitforwindows_environment() {
+configure_gitforwindows() {
   if [[ -z "$(grep -w "^# golang" /etc/profile.d/$USERNAME.sh)" ]]; then
     echo -e "\033[32m  add git environment GOHOME=$GOHOME_LINUX\033[0m"
     echo -e "\033[32m  add git environment GOPATH=$GOPATH_LINUX\033[0m"
@@ -108,20 +96,34 @@ EOF
 }
 
 
-configure_gitforwindows() {
-  configure_gitforwindows_environment
-}
+install_go() {
+  if [[ -d "$GOHOME" ]]; then return; fi
 
+  echo -e "\033[32mgo installing...\033[0m"
 
-go_configure() {
+  # install
+  curl -s -L "https://dl.google.com/go/go${GO_VERSION}.windows-amd64.msi" --output "go${GO_VERSION}.msi"
+  ./start.bat "go${GO_VERSION}.msi"
+  rm -rf "go${GO_VERSION}.msi"
+
+  # install failed
+  if [[ ! -d "$GOHOME" ]]; then
+    echo -e "\033[31mgo$GO_VERSION install failed.\033[0m"
+    return
+  fi
+
+  # configure goland
   echo -e "\033[32mgo configuring...\033[0m"
 
   configure_windows
   configure_gitforwindows
+
+  # complete
+  echo -e "\033[35mgo$GO_VERSION install complete.\033[0m"
 }
 
 
-ide_install() {
+install_ide() {
   if [[ -d "$IDE_HOME" ]]; then return; fi
 
   echo && read -n 1 -p "Do you need to install goland-$IDE_VERSION? (y/n)" install && echo
@@ -132,7 +134,15 @@ ide_install() {
 
   echo -e "\033[32mgoland installing...\033[0m"
   ./start.bat "goland-$IDE_VERSION.exe"
+  rm -r "goland-$IDE_VERSION.exe"
 
+  # install failed
+  if [[ ! -d "$IDE_HOME" ]]; then
+    echo -e "\033[31mgoland install failed.\033[0m"
+    return
+  fi
+
+  # configure goland
   echo -e "\033[32mgoland configuring...\033[0m"
   local appdata="$USERPROFILE\AppData\Roaming\JetBrains\GoLand$IDE_VERSION_SHORT"
   if [ -d "$appdata" ]; then rm -rf $appdata; fi
@@ -157,12 +167,8 @@ if [[ ! "$input" =~ ^[yY]$ ]]; then exit; fi
 
 windows_alias_install
 
-go_install
-go_configure
-echo -e "\033[35mgo$GO_VERSION install complete.\033[0m"
-
-# install ide
-ide_install
+install_go
+install_ide
 
 windows_alias_uninstall
 

@@ -5,13 +5,14 @@ set -e
 windows_terminal_home="D:\WindowsTerminal"
 windows_terminal_version="1.20.11781.0"
 
+git_home="D:\local\git"
 
 # link
 mklink_opt_windows="D:\opt"
-mklink_opt_linux="$EXEPATH\..\opt" # /opt
+mklink_opt_linux="$git_home\opt" # /opt
 
 mklink_local_windows="D:\local"
-mklink_local_linux="$EXEPATH\..\usr\local" # /usr/local
+mklink_local_linux="$git_home\usr\local" # /usr/local
 
 
 # linux 目录链接, 用于在 bash 环境中模拟 lunux 目录结构
@@ -31,14 +32,14 @@ EOF
     if [[ ! -d "$mklink_opt_windows" ]]; then
       mkdir -p "$mklink_opt_windows"
     fi
-    ./mklink.bat "$mklink_opt_linux" "$mklink_opt_windows" &>/dev/null
+    ./mklink.bat "$mklink_opt_linux" "$mklink_opt_windows"
   fi
 
   if [[ ! -d "$mklink_local_linux" ]]; then
     if [[ ! -d "$mklink_local_windows" ]]; then
       mkdir -p "$mklink_local_windows"
     fi
-    ./mklink.bat "$mklink_local_linux" "$mklink_opt_windows" &>/dev/null
+    ./mklink.bat "$mklink_local_linux" "$mklink_local_windows"
   fi
 
   rm -rf mklink.bat
@@ -158,6 +159,7 @@ install_windows_terminal() {
 
 
 # main
+cd $git_home
 read -n 1 -p "Please make sure the proxy is enabled. Continue? (y/n)" input && echo
 if [[ ! "$input" =~ ^[yY]$ ]]; then exit; fi
 

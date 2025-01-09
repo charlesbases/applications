@@ -92,14 +92,26 @@
 
 ## Git-for-Windows
 
-### [v2.45.2](https://github.com/git-for-windows/git/releases/download/v2.45.2.windows.1/Git-2.45.2-64-bit.exe)
+### [v2.46.2](https://github.com/git-for-windows/git/releases/download/v2.46.2.windows.1/Git-2.46.2-64-bit.exe)
+
+
+
+[git_configure.sh](./Scripts/win/git_configure.sh)
+
+```shell
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/charlesbases/applications/master/Scripts/win/git_configure.sh)"
+```
+
+
+
+configuration
 
 ```shell
 # [CMD] 添加 PATH
 SETX PATH "%PATH%;D:\local\git\bin" /M
 
 # 配置目录映射, 模拟 linux 环境
-mklink /J "D:\local\git\opt" "E:\opt"
+mklink /J "D:\local\git\opt" "D:\opt"
 mklink /J "D:\local\git\usr\local" "D:\local"
 ```
 
@@ -235,7 +247,17 @@ ssh-keygen -t rsa -b 2048 -C "zhiming.sun" -f id_rsa
 - [git-for-windows](#git-for-windows)
 - [go 1.22](https://dl.google.com/go/go1.22.10.windows-amd64.msi)
 
-environments
+
+
+[go_install.sh](./Scripts/win/go_install.sh)
+
+```shell
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/charlesbases/applications/master/Scripts/win/go_install.sh)"
+```
+
+
+
+configuration
 
 ```shell
 # [PowerShell]
@@ -250,12 +272,41 @@ Remove-ItemProperty HKCU:\Environment GOPATH
 
 # 配置 Windows 环境变量
 SETX GOHOME "D:\local\go" /M
-SETX GOPATH "E:\opt\go" /M
+SETX GOPATH "D:\opt\go" /M
 SETX GOPROXY "https://goproxy.io,direct" /M
 SETX GOSUMDB "off" /M
 SETX GO111MODULE "on" /M
-SETX PATH "%PATH%;E:\opt\go\bin" /M
+SETX PATH "%PATH%;D:\opt\go\bin" /M
 ```
+
+```shell
+cat > _go.sh << EOF
+#!/bin/bash
+
+# 删除用户变量
+powershell -Command "Remove-ItemProperty HKCU:\Environment PATH" &>/dev/null
+powershell -Command "Remove-ItemProperty HKCU:\Environment GOPATH" &>/dev/null
+
+# 配置 Git for Windows 环境变量
+if [[ -n "$(grep -w "^# golang" /etc/profile.d/$USERNAME.sh)" ]]; then exit; fi
+
+echo '''
+# golang
+export GOHOME="/usr/local/go"
+export GOPATH="/opt/go"
+export GOSUMDB="off"
+export GOPROXY="https://goproxy.io,direct"
+export GO111MODULE="on"
+
+alias cs="cd /opt/go/src"
+''' >> /etc/profile.d/$USERNAME.sh
+
+EOF
+
+bash ./_go.sh; rm -r _go.sh
+```
+
+
 
 ```shell
 # 配置 Git for Windows 环境变量
@@ -267,7 +318,7 @@ export GOPROXY="https://goproxy.io,direct"
 export GO111MODULE="on"
 export PATH="$PATH:/opt/go/bin"
 
-alias cs="cd $GOPATH/src"
+alias cs="cd /opt/go/src"
 EOF
 
 source /etc/profile.d/$USERNAME.sh
@@ -281,11 +332,6 @@ mkdir -p $GOPATH/{bin,pkg,src}
 - [git-for-windows](#git-for-windows)
 - [python 3.12.8](https://www.python.org/ftp/python/3.12.8/python-3.12.8-amd64.exe)
 
-environments
-
-```shell
-```
-
 
 
 ## Applications
@@ -293,12 +339,6 @@ environments
 ### proxy
 
 - [v2aky](https://dl.v2aky.net/clients/v2aky_windows_4.1.8.exe)
-
-  ```shell
-  # [CMD] 设置代理
-  
-  SETX ALL_PROXY="socks5://127.0.0.1:33211" /M
-  ```
 
   
 
@@ -313,13 +353,35 @@ environments
 - [latest](https://download2.typoraio.cn/windows/typora-setup-x64.exe)
 
 ```shell
-# theme
+url="https://download2.typoraio.cn/windows/typora-setup-x64.exe"
 
-# 浅色
-curl -L https://raw.githubusercontent.com/charlesbases/applications/master/Typora/theme/hemera.css --output "$USERPROFILE\AppData\Roaming\Typora\themes\hemera.css"
+cat > install.bat << EOF
+@echo off
+::echo param[0] = %0
+::echo param[1] = %1
+start /wait "" %1
+EOF
 
-# 深色
-curl -L https://raw.githubusercontent.com/charlesbases/applications/master/Typora/theme/nyx.css --output "$USERPROFILE\AppData\Roaming\Typora\themes\nyx.css"
+cat > typora.sh << EOF
+#!/bin/bash
+
+set -e
+
+# install
+curl -s -L "$url" --output "typora.exe"
+./install.bat "typora.exe"
+
+# install theme
+appdata="$USERPROFILE\AppData\Roaming\Typora\themes"
+if [[ ! -d "$appdata" ]]; then mkdir -p "$appdata"; fi
+curl -L https://raw.githubusercontent.com/charlesbases/applications/master/Typora/theme/hemera.css --output "$appdata\hemera.css"
+curl -L https://raw.githubusercontent.com/charlesbases/applications/master/Typora/theme/nyx.css --output "$appdata\nyx.css"
+
+# clean
+rm -r install.bat typora.exe
+EOF
+
+bash ./typora.sh; rm -r typora.sh
 ```
 
 
@@ -328,62 +390,103 @@ curl -L https://raw.githubusercontent.com/charlesbases/applications/master/Typor
 
 #### 1. [rider-2024.1](https://download-cdn.jetbrains.com/rider/JetBrains.Rider-2024.1.6.exe)
 
-setting
+
 
 ```shell
-appdata="$USERPROFILE\AppData\Roaming\JetBrains\Rider2024.1"
-if [ -d "$appdata" ]; then rm -rf $appdata; fi
-mkdir -p $appdata
+version=2024.1.6
+version_short=2024.1
+install_home="D:\JetBrains\rider"
 
-curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/rider/win/2024.1/roaming.zip --output roaming.zip
+cat > install.bat << EOF
+@echo off
+::echo param[0] = %0
+::echo param[1] = %1
+start /wait "" %1
+EOF
+
+cat > jetbrains-rider.sh << EOF
+#!/bin/bash
+
+set -e
+
+# download
+filename="rider-$version.exe"
+curl -L "https://download.jetbrains.com/rider/JetBrains.Rider-$version.exe" --output $filename
+./install.bat "$filename"
+
+# configure
+appdata="$USERPROFILE\AppData\Roaming\JetBrains\Rider$version_short"
+if [ -d "$appdata" ]; then rm -rf $appdata; fi
+mkdir -p $appdata &>/dev/null
+
+# roaming
+curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/rider/win/$version_short/roaming.zip --output roaming.zip
 unzip -o -q roaming.zip -d $appdata
 
-curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/rider/win/2024.1/setting.zip --output setting.zip
+# settings
+curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/rider/win/$version_short/setting.zip --output setting.zip
 unzip -o -q setting.zip -d $appdata
 
-rm -rf roaming.zip setting.zip
+# rm llmInstaller
+if [[ -d "$install_home\plugins\llmInstaller" ]]； then rm -rf "$install_home\plugins\llmInstaller"; fi
+
+# clean
+rm -r install.bat roaming.zip setting.zip $filename
+EOF
+
+bash ./jetbrains-rider.sh; rm -r jetbrains-rider.sh
 ```
 
-```shell
-# 删除安装目录下 llmInstaller
-rm -rf "D:\JetBrains\JetBrains Rider\plugins\llmInstaller"
-```
 
 
-
-#### 2. [goland-2024.1](https://download-cdn.jetbrains.com/go/goland-2024.1.6.exe?)
+#### 2. [goland-2024.1](https://download-cdn.jetbrains.com/go/goland-2024.1.6.exe)
 
 - [golang](#golang)
 
-settings
+
 
 ```shell
-appdata="$USERPROFILE\AppData\Roaming\JetBrains\GoLand2024.1"
-if [ -d "$appdata" ]; then rm -rf $appdata; fi
-mkdir -p $appdata
+version=2024.1.6
+version_short=2024.1
+install_home="D:\JetBrains\goland"
 
-curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/goland/win/2024.1/roaming.zip --output roaming.zip
+cat > install.bat << EOF
+@echo off
+::echo param[0] = %0
+::echo param[1] = %1
+start /wait "" %1
+EOF
+
+cat > jetbrains-goland.sh << EOF
+#!/bin/bash
+
+set -e
+
+# download
+curl -L "https://download.jetbrains.com/go/goland-$version.exe" --output goland-$version.exe
+./install.bat "goland-$version.exe"
+
+# configure
+appdata="$USERPROFILE\AppData\Roaming\JetBrains\GoLand$version_short"
+if [ -d "$appdata" ]; then rm -rf $appdata; fi
+mkdir -p $appdata &>/dev/null
+
+# roaming
+curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/goland/win/$version_short/roaming.zip --output roaming.zip
 unzip -o -q roaming.zip -d $appdata
 
-curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/goland/win/2024.1/setting.zip --output setting.zip
+# settings
+curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/goland/win/$version_short/setting.zip --output setting.zip
 unzip -o -q setting.zip -d $appdata
 
-rm -rf roaming.zip setting.zip
-```
+# rm llmInstaller
+if [[ -d "$install_home\plugins\llmInstaller" ]]； then rm -rf "$install_home\plugins\llmInstaller"; fi
 
-```shell
-# 删除安装目录下 llmInstaller
-rm -rf "D:\JetBrains\GoLand\plugins\llmInstaller"
-```
+# clean
+rm -r install.bat roaming.zip setting.zip goland-$version.exe
+EOF
 
-```shell
-# Error: (DEBUG) undefined behavior - version of Delve is too old for Go version 1.20 (manimum supported version 1.18)
-
-# update dlv.exe
-INSTALLATION_PATH="D:\JetBrains\GoLand\plugins\go\lib\dlv\windows"
-go install github.com/go-delve/delve/cmd/dlv@latest
-mkdir -p "$INSTALLATION_PATH"
-mv "$GOPATH/bin/dlv.exe" "$INSTALLATION_PATH"
+bash ./jetbrains-goland.sh; rm -r jetbrains-goland.sh
 ```
 
 
@@ -392,52 +495,100 @@ mv "$GOPATH/bin/dlv.exe" "$INSTALLATION_PATH"
 
 - [python](#python)
 
-settings
+
 
 ```shell
-appdata="$USERPROFILE\AppData\Roaming\JetBrains\PyCharm2024.1"
-if [ -d "$appdata" ]; then rm -rf $appdata; fi
-mkdir -p $appdata
+version=2024.1.7
+version_short=2024.1
+install_home="D:\JetBrains\pycharm"
 
-curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/pycharm/win/2024.1/roaming.zip --output roaming.zip
+cat > install.bat << EOF
+@echo off
+::echo param[0] = %0
+::echo param[1] = %1
+start /wait "" %1
+EOF
+
+cat > jetbrains-pycharm.sh << EOF
+#!/bin/bash
+
+set -e
+
+# download
+filename="pycharm-$version.exe"
+curl -L "https://download.jetbrains.com/python/pycharm-professional-$version.exe" --output $filename
+./install.bat "$filename"
+
+# configure
+appdata="$USERPROFILE\AppData\Roaming\JetBrains\Rider$version_short"
+if [ -d "$appdata" ]; then rm -rf $appdata; fi
+mkdir -p $appdata &>/dev/null
+
+# roaming
+curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/pycharm/win/$version_short/roaming.zip --output roaming.zip
 unzip -o -q roaming.zip -d $appdata
 
-curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/pycharm/win/2024.1/setting.zip --output setting.zip
+# settings
+curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/pycharm/win/$version_short/setting.zip --output setting.zip
 unzip -o -q setting.zip -d $appdata
 
-rm -rf roaming.zip setting.zip
-```
+# rm llmInstaller
+if [[ -d "$install_home\plugins\llmInstaller" ]]； then rm -rf "$install_home\plugins\llmInstaller"; fi
 
-```shell
-# 删除安装目录下 llmInstaller
-rm -rf "D:\JetBrains\PuCharm\plugins\llmInstaller"
+# clean
+rm -r install.bat roaming.zip setting.zip $filename
+EOF
+
+bash ./jetbrains-pycharm.sh && rm -r jetbrains-pycharm.sh
 ```
 
 
 
 #### 4. [datagrip-2024.1](https://download-cdn.jetbrains.com/datagrip/datagrip-2024.1.5.exe)
 
-settings
-
 ```shell
-# settings
+version=2024.1.5
+version_short=2024.1
+install_home="D:\JetBrains\datagrip"
 
-appdata="$USERPROFILE\AppData\Roaming\JetBrains\DataGrip2024.1"
+cat > install.bat << EOF
+@echo off
+::echo param[0] = %0
+::echo param[1] = %1
+start /wait "" %1
+EOF
+
+cat > jetbrains-datagrip.sh << EOF
+#!/bin/bash
+
+set -e
+
+# download
+filename="pycharm-$version.exe"
+curl -L "https://download.jetbrains.com/datagrip/datagrip-$version.exe" --output $filename
+./install.bat "$filename"
+
+# configure
+appdata="$USERPROFILE\AppData\Roaming\JetBrains\DataGrip$version_short"
 if [ -d "$appdata" ]; then rm -rf $appdata; fi
-mkdir -p $appdata
+mkdir -p $appdata &>/dev/null
 
-curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/datagrip/win/2024.1/roaming.zip --output roaming.zip
+# roaming
+curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/datagrip/win/$version_short/roaming.zip --output roaming.zip
 unzip -o -q roaming.zip -d $appdata
 
-curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/datagrip/win/2024.1/setting.zip --output setting.zip
+# settings
+curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/datagrip/win/$version_short/setting.zip --output setting.zip
 unzip -o -q setting.zip -d $appdata
 
-rm -rf roaming.zip setting.zip
-```
+# rm llmInstaller
+if [[ -d "$install_home\plugins\llmInstaller" ]]； then rm -rf "$install_home\plugins\llmInstaller"; fi
 
-```shell
-# 删除安装目录下 llmInstaller
-rm -rf "D:\JetBrains\DataGrip\plugins\llmInstaller"
+# clean
+rm -r install.bat roaming.zip setting.zip $filename
+EOF
+
+bash ./jetbrains-datagrip.sh; rm -r jetbrains-datagrip.sh
 ```
 
 
@@ -459,6 +610,15 @@ mklink /J "C:\Program Files\Google" "D:\Google"
   # --incognito                 隐身模式启动
   # --ignore-certificate-errors 忽略证书错误
   ```
+
+- Regedit
+
+  ```powershell
+  # 隐身模式打开链接
+  Set-ItemProperty -Path "HKLM:\SOFTWARE\Classes\ChromeHTML\shell\open\command" -Name "(default)" -Value '"C:\Program Files\Google\Chrome\Application\chrome.exe" --incognito --single-argument %1'
+  ```
+
+  
 
 - Google Update
 
