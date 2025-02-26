@@ -388,9 +388,9 @@ bash ./typora.sh; rm -r typora.sh
 
 ### JetBrains
 
-#### 1. [rider-2024.1](https://download-cdn.jetbrains.com/rider/JetBrains.Rider-2024.1.6.exe)
+#### 1. rider
 
-
+##### [2024.1](https://download-cdn.jetbrains.com/rider/JetBrains.Rider-2024.1.6.exe)
 
 ```shell
 version=2024.1.6
@@ -439,16 +439,18 @@ bash ./jetbrains-rider.sh; rm -r jetbrains-rider.sh
 
 
 
-#### 2. [goland-2024.1](https://download-cdn.jetbrains.com/go/goland-2024.1.6.exe)
+#### 2. goland
 
-- [golang](#golang)
-
-
+##### [2023.3](https://download-cdn.jetbrains.com/go/goland-2023.3.8.exe)
 
 ```shell
-version=2024.1.6
-version_short=2024.1
-install_home="D:\JetBrains\goland"
+application="goland"
+application_camel="GoLand"
+application_version="2023.3.8"
+application_version_short="2023.3"
+application_installation_home="D:\JetBrains\\$application"
+application_download_url="https://download-cdn.jetbrains.com/go/goland-2023.3.8.exe"
+
 
 cat > install.bat << EOF
 @echo off
@@ -457,45 +459,134 @@ cat > install.bat << EOF
 start /wait "" %1
 EOF
 
-cat > jetbrains-goland.sh << EOF
+cat > jetbrains.sh << EOF
 #!/bin/bash
+
 
 set -e
 
-# download
-curl -L "https://download.jetbrains.com/go/goland-$version.exe" --output goland-$version.exe
-./install.bat "goland-$version.exe"
+
+if [ ! -d "$application_installation_home" ]; then
+  # download
+  echo -e "\033[32m$application $application_version downloading ...\033[0m"
+  curl -L "$application_download_url" --output $application-$application_version.exe
+
+  # install
+  echo -e "\033[32mwait for the installation to complete ...\033[0m"
+  ./install.bat "$application-$application_version.exe"
+
+  # clean
+  rm -r $application-$application_version.exe
+fi
+
 
 # configure
-appdata="$USERPROFILE\AppData\Roaming\JetBrains\GoLand$version_short"
-if [ -d "$appdata" ]; then rm -rf $appdata; fi
-mkdir -p $appdata &>/dev/null
+data="$APPDATA\JetBrains\\$application_camel$application_version_short"
 
-# roaming
-curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/goland/win/$version_short/roaming.zip --output roaming.zip
-unzip -o -q roaming.zip -d $appdata
+
+if [ -d "\$data" ]; then rm -rf \$data; fi
+mkdir -p "\$data"
+
 
 # settings
-curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/goland/win/$version_short/setting.zip --output setting.zip
-unzip -o -q setting.zip -d $appdata
+echo -e "\033[32m$application setting downloading ...\033[0m"
 
-# rm llmInstaller
-if [[ -d "$install_home\plugins\llmInstaller" ]]； then rm -rf "$install_home\plugins\llmInstaller"; fi
+
+curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/$application/win/$application_version_short/setting.zip --output setting.zip
+unzip -o -q setting.zip -d \$data
+
+
+# dlv update
+# echo -e "\033[32mgithub.com/go-delve/delve/cmd/dlv@latest downloading ...\033[0m"
+# go install github.com/go-delve/delve/cmd/dlv@latest
+# mv $GOPATH/bin/dlv.exe "$application_installation_home\plugins\go-plugin\lib\dlv\windows"
+
+
+# alias
+echo "alias $application='start \"$application_installation_home\bin\\${application}64.exe\"'" >> /etc/profile.d/$USERNAME.sh
+
 
 # clean
-rm -r install.bat roaming.zip setting.zip goland-$version.exe
+rm -r install.bat setting.zip
+
+
+echo -e "\033[32m$application $application_version_short install complete\033[0m"
 EOF
 
-bash ./jetbrains-goland.sh; rm -r jetbrains-goland.sh
+
+bash ./jetbrains.sh; rm -r jetbrains.sh
+
 ```
 
 
 
-#### 3. [pycharm-2024.1](https://download-cdn.jetbrains.com/python/pycharm-professional-2024.1.7.exe)
+##### [2024.3](https://download-cdn.jetbrains.com/go/goland-2024.3.3.exe)
 
-- [python](#python)
+```shell
+cat > install.bat << EOF
+@echo off
+::echo param[0] = %0
+::echo param[1] = %1
+start /wait "" %1
+EOF
+
+cat > jetbrains-goland.sh << "EOF"
+#!/bin/bash
+
+version=2024.3.4
+version_short=2024.3
+install_home="D:\JetBrains\goland"
+
+set -e
+
+if [ ! -d "$install_home" ]; then
+  # download
+  echo -e "\033[32mgoland $version downloading ...\033[0m"
+  curl -L "https://download.jetbrains.com/go/goland-$version.exe" --output goland-$version.exe
+
+  # install
+  echo -e "\033[32mwait for the installation to complete ...\033[0m"
+  ./install.bat "goland-$version.exe"
+
+  # clean
+  rm -r goland-$version.exe
+fi
+
+# dlv update
+echo -e "\033[32mgithub.com/go-delve/delve/cmd/dlv@latest downloading ...\033[0m"
+go install github.com/go-delve/delve/cmd/dlv@latest
+mv $GOPATH/bin/dlv.exe "$install_home\plugins\go-plugin\lib\dlv\windows"
+
+# configure
+data="$APPDATA\JetBrains\GoLand$version_short"
+
+if [ -d "$data" ]; then rm -rf $data; fi
+mkdir -p "$data"
+
+# settings
+echo -e "\033[32mgoland setting downloading ...\033[0m"
+
+curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/goland/win/$version_short/setting.zip --output setting.zip
+unzip -o -q setting.zip -d $data
+
+# alias
+echo "alias goland='start \"$install_home\bin\goland64.exe\"'" >> /etc/profile.d/$USERNAME.sh
+
+# clean
+rm -r install.bat setting.zip
+
+echo -e "\033[32mgoland $version install complete\033[0m"
+EOF
+
+bash ./jetbrains-goland.sh; rm -r jetbrains-goland.sh
+
+```
 
 
+
+#### 3. pycharm
+
+##### [2024.1](https://download-cdn.jetbrains.com/python/pycharm-professional-2024.1.7.exe)
 
 ```shell
 version=2024.1.7
@@ -544,7 +635,9 @@ bash ./jetbrains-pycharm.sh && rm -r jetbrains-pycharm.sh
 
 
 
-#### 4. [datagrip-2024.1](https://download-cdn.jetbrains.com/datagrip/datagrip-2024.1.5.exe)
+#### 4. datagrip
+
+##### [2024.1]()
 
 ```shell
 version=2024.1.5
@@ -589,6 +682,81 @@ rm -r install.bat roaming.zip setting.zip $filename
 EOF
 
 bash ./jetbrains-datagrip.sh; rm -r jetbrains-datagrip.sh
+```
+
+
+
+#### 5. pphpstorm
+
+##### [2023.3](https://download-cdn.jetbrains.com/webide/PhpStorm-2023.3.8.exe)
+
+```shell
+application="phpstorm"
+application_camel="PhpStorm"
+application_version="2023.3.8"
+application_version_short="2023.3"
+application_installation_home="D:\JetBrains\\$application"
+application_download_url="https://download-cdn.jetbrains.com/webide/PhpStorm-2023.3.8.exe"
+
+
+cat > install.bat << EOF
+@echo off
+::echo param[0] = %0
+::echo param[1] = %1
+start /wait "" %1
+EOF
+
+cat > jetbrains.sh << EOF
+#!/bin/bash
+
+
+set -e
+
+
+if [ ! -d "$application_installation_home" ]; then
+  # download
+  echo -e "\033[32m$application $application_version downloading ...\033[0m"
+  curl -L "$application_download_url" --output $application-$application_version.exe
+
+  # install
+  echo -e "\033[32mwait for the installation to complete ...\033[0m"
+  ./install.bat "$application-$application_version.exe"
+
+  # clean
+  rm -r $application-$application_version.exe
+fi
+
+
+# configure
+data="$APPDATA\JetBrains\\$application_camel$application_version_short"
+
+
+if [ -d "\$data" ]; then rm -rf \$data; fi
+mkdir -p "\$data"
+
+
+# settings
+echo -e "\033[32m$application setting downloading ...\033[0m"
+
+
+curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/$application/win/$application_version_short/setting.zip --output setting.zip
+unzip -o -q setting.zip -d \$data
+
+
+# alias
+echo "alias $application='start \"$application_installation_home\bin\\${application}64.exe\"'" >> /etc/profile.d/$USERNAME.sh
+
+
+# clean
+rm -r install.bat setting.zip
+
+
+echo -e "\033[32m$application $application_version_short install complete\033[0m"
+EOF
+
+
+bash ./jetbrains.sh; rm -r jetbrains.sh
+
 ```
 
 
