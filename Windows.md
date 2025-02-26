@@ -388,9 +388,9 @@ bash ./typora.sh; rm -r typora.sh
 
 ### JetBrains
 
-#### 1. [rider-2024.1](https://download-cdn.jetbrains.com/rider/JetBrains.Rider-2024.1.6.exe)
+#### 1. rider
 
-
+##### [2024.1](https://download-cdn.jetbrains.com/rider/JetBrains.Rider-2024.1.6.exe)
 
 ```shell
 version=2024.1.6
@@ -439,11 +439,9 @@ bash ./jetbrains-rider.sh; rm -r jetbrains-rider.sh
 
 
 
-#### 2. [goland-2024.1](https://download-cdn.jetbrains.com/go/goland-2024.1.6.exe)
+#### 2. goland
 
-- [golang](#golang)
-
-
+##### [2024.1](https://download-cdn.jetbrains.com/go/goland-2024.1.6.exe)
 
 ```shell
 version=2024.1.6
@@ -489,15 +487,69 @@ EOF
 bash ./jetbrains-goland.sh; rm -r jetbrains-goland.sh
 ```
 
-
-
-#### 3. [pycharm-2024.1](https://download-cdn.jetbrains.com/python/pycharm-professional-2024.1.7.exe)
-
-- [python](#python)
-
-
+##### [2024.3](https://download-cdn.jetbrains.com/go/goland-2024.3.3.exe)
 
 ```shell
+version=2024.3.3
+version_short=2024.3
+install_home="/d/JetBrains/goland"
+
+cat > install.bat << EOF
+@echo off
+::echo param[0] = %0
+::echo param[1] = %1
+start /wait "" %1
+EOF
+
+cat > jetbrains-goland.sh << EOF
+#!/bin/bash
+
+set -e
+
+if [ ! -d "$install_home" ]; then
+  # download
+  echo -e "🍺 \033[32mgoland $version downloading ...\033[0m"
+  curl -L "https://download.jetbrains.com/go/goland-$version.exe" --output goland-$version.exe
+
+  # install
+  echo -e "🍺 \033[32mwait for the installation to complete ...\033[0m"
+  ./install.bat "goland-$version.exe"
+  
+  # clean
+  rm -r goland-$version.exe
+fi
+
+# configure
+appdata="$HOME/AppData/Roaming/JetBrains/GoLand$version_short"
+if [ -d "$appdata" ]; then rm -rf $appdata; fi
+mkdir -p $appdata
+
+# settings
+echo -e "🍺 \033[32mgoland setting downloading ...\033[0m"
+
+curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/goland/win/$version_short/setting.zip --output setting.zip
+unzip -o -q setting.zip -d $appdata
+
+# alias
+echo "alias goland='start \"$install_home/bin/goland64.exe\"'" >> /etc/profile.d/$USERNAME.sh
+
+# clean
+rm -r install.bat setting.zip 
+
+echo -e "🎉 \033[32mgoland $version install complete\033[0m"
+EOF
+
+bash ./jetbrains-goland.sh; rm -r jetbrains-goland.sh
+
+```
+
+
+
+#### 3. pycharm
+
+##### [2024.1](https://download-cdn.jetbrains.com/python/pycharm-professional-2024.1.7.exe)
+
+```
 version=2024.1.7
 version_short=2024.1
 install_home="D:\JetBrains\pycharm"
@@ -544,7 +596,9 @@ bash ./jetbrains-pycharm.sh && rm -r jetbrains-pycharm.sh
 
 
 
-#### 4. [datagrip-2024.1](https://download-cdn.jetbrains.com/datagrip/datagrip-2024.1.5.exe)
+#### 4. datagrip
+
+##### [2024.1]()
 
 ```shell
 version=2024.1.5
