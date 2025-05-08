@@ -96,7 +96,7 @@ git_configure_profile() {
   # /etc/profile.d/$USERPROFILE.sh
   echo -e "\033[32mconfigure /etc/profile.d/$USERNAME.sh\033[0m"
   if [[ ! -f "/etc/profile.d/$USERNAME.sh" ]]; then
-    cat > /etc/profile.d/$USERNAME.sh << EOF
+    cat > /etc/profile.d/$USERNAME.sh << "EOF"
 #!/usr/bin/env bash
 
 # 将每个 session 的历史记录行追加到历史文件中
@@ -106,6 +106,10 @@ PROMPT_COMMAND='history -a'
 alias l='ls -lhv'
 alias la='ls -alhv'
 alias open='start "" '
+
+# git-for-windows
+alias gitfetch='git fetch --all --prune'
+alias gitreset='git reset --hard $(git branch --show-current)'
 
 EOF
   fi

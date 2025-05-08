@@ -78,8 +78,14 @@ configure_gitforwindows() {
     echo -e "\033[32m  add git environment GOPROXY=https://goproxy.io,direct\033[0m"
     echo -e "\033[32m  add git environment GO111MODULE=on\033[0m"
 
-    cat >> /etc/profile.d/$USERNAME.sh << EOF
+    cat >> /etc/profile.d/$USERNAME.sh << "EOF"
 
+# environments
+export PATH="$PATH:/opt/go/bin"
+
+EOF
+
+    cat >> /etc/profile.d/$USERNAME.sh << EOF
 # golang
 export GOHOME="$GOHOME_LINUX"
 export GOPATH="$GOPATH_LINUX"
@@ -88,6 +94,7 @@ export GOPROXY="https://goproxy.io,direct"
 export GO111MODULE="on"
 
 alias cs="cd $GOPATH_LINUX/src"
+
 EOF
 
     source /etc/profile.d/$USERNAME.sh

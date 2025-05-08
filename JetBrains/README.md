@@ -31,7 +31,9 @@
   - ##### pty
   
     ```shell
-    # Error: (Terminal) 文字丢失
+    # Error: 
+    #   (Terminal) 文字丢失
+    #   Run 乱码
     
     # disable pty
     # 路径：Help -> Find Action -> Registry -> go.run.procesess.with.pty -> disable

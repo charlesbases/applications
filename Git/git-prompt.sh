@@ -11,7 +11,7 @@ fi
 
 
 __git_branch() {
-  local branch=$(git branch 2>/dev/null | awk -F' ' '/*/ {print $2}')
+  local branch=$(git branch --show-current 2>/dev/null)
 
   if test -n "$branch"
   then
@@ -23,7 +23,7 @@ __git_branch() {
 # color: blue
 PS1='\n\[\033[34m\]#\[\033[0m\] '
 # user. color: cyan
-PS1="$PS1"'\[\033[36m\]\u\[\033[0m\]'
+PS1="$PS1"'\[\033[36m\]sun\[\033[0m\]'
 # '@'
 PS1="$PS1"' @ '
 # hostname. color: green
