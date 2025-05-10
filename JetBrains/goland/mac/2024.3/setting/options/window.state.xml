@@ -1,0 +1,24 @@
+<application>
+  <component name="DimensionService">
+    <location key="find.popup.0.0.3456.2234@192dpi" x="1332" y="304" />
+    <size key="find.popup.0.0.3456.2234@192dpi" width="1196" height="1428" />
+  </component>
+  <component name="WindowManager">
+    <frame x="0" y="37" width="1728" height="1080" fullScreen="true" />
+  </component>
+  <component name="WindowStateApplicationService">
+    <state width="535" height="78" key="ShowUsagesActions.dimensionServiceKey" timestamp="1746951280445">
+      <screen x="0" y="32" width="1728" height="1085" />
+    </state>
+    <state width="535" height="78" key="ShowUsagesActions.dimensionServiceKey/0.32.1728.1085" timestamp="1746951280445" />
+    <state x="864" y="488" width="800" height="650" key="WELCOME_SCREEN" timestamp="1747268040967">
+      <screen x="0" y="38" width="1728" height="1026" />
+    </state>
+    <state x="864" y="488" width="800" height="650" key="WELCOME_SCREEN/0.38.1728.1026" timestamp="1747268040967" />
+    <state width="300" height="539" key="manage.recent.projects.popup" timestamp="1747268025163">
+      <screen x="0" y="32" width="1728" height="1085" />
+    </state>
+    <state width="300" height="539" key="manage.recent.projects.popup/0.32.1728.1085" timestamp="1747268025163" />
+    <state width="300" height="509" key="manage.recent.projects.popup/0.38.1728.1026" timestamp="1747093331462" />
+  </component>
+</application>

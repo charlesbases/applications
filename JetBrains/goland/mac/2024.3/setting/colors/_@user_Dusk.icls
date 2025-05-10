@@ -1,0 +1,22 @@
+<scheme name="_@user_Dusk" version="142" parent_scheme="Darcula">
+  <metaInfo>
+    <property name="ide">GoLand</property>
+    <property name="ideVersion">2024.3.5.0.0</property>
+    <property name="originalScheme">Dusk</property>
+    <property name="partialSave">true</property>
+  </metaInfo>
+  <colors>
+    <option name="FILESTATUS_ADDED" value="98c779" />
+    <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_BOTH_CONFLICTS" value="dbac49" />
+    <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_CONFLICTS" value="dbac49" />
+    <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="dbac49" />
+    <option name="FILESTATUS_MERGED" value="dbac49" />
+    <option name="FILESTATUS_MODIFIED" value="95c7" />
+    <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="95c7" />
+    <option name="FILESTATUS_NOT_CHANGED_RECURSIVE" value="95c7" />
+    <option name="FILESTATUS_UNKNOWN" value="e06c75" />
+    <option name="FILESTATUS_addedOutside" value="98c779" />
+    <option name="FILESTATUS_changelistConflict" value="" />
+    <option name="FILESTATUS_modifiedOutside" value="95c7" />
+  </colors>
+</scheme>

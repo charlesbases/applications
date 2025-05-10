@@ -1,0 +1,5 @@
+<application>
+  <component name="GeneralLocalSettings">
+    <option name="defaultProjectDirectory" value="/opt/go/src" />
+  </component>
+</application>

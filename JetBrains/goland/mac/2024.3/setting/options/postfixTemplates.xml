@@ -1,0 +1,57 @@
+<application>
+  <component name="PostfixTemplatesSettings">
+    <option name="providerToDisabledTemplates">
+      <disabled-templates provider="com.goide.postfix.GoPostfixTemplateProvider">
+        <value>
+          <set>
+            <option value="ParseFloat" />
+            <option value="ParseInt" />
+            <option value="append" />
+            <option value="appendAssign" />
+            <option value="close" />
+            <option value="com.goide.postfix.GoDereferencePostfixTemplate#*" />
+            <option value="com.goide.postfix.GoDereferencePostfixTemplate#.d" />
+            <option value="com.goide.postfix.GoDereferencePostfixTemplate#.dereference" />
+            <option value="com.goide.postfix.GoElseStatementPostfixTemplate#.else" />
+            <option value="com.goide.postfix.GoForPostfixTemplate#.for" />
+            <option value="com.goide.postfix.GoForWithKeyPostfixTemplate#.forr" />
+            <option value="com.goide.postfix.GoIfStatementPostfixTemplate#.if" />
+            <option value="com.goide.postfix.GoNilStatementPostfixTemplate#.nil" />
+            <option value="com.goide.postfix.GoNotExpressionPostfixTemplate#!" />
+            <option value="com.goide.postfix.GoNotExpressionPostfixTemplate#.not" />
+            <option value="com.goide.postfix.GoNotNilStatementPostfixTemplate#.nn" />
+            <option value="com.goide.postfix.GoNotNilStatementPostfixTemplate#.notnil" />
+            <option value="com.goide.postfix.GoParPostfixTemplate#.par" />
+            <option value="com.goide.postfix.GoPointerPostfixTemplate#&amp;" />
+            <option value="com.goide.postfix.GoPointerPostfixTemplate#.p" />
+            <option value="com.goide.postfix.GoPointerPostfixTemplate#.pointer" />
+            <option value="com.goide.postfix.GoReturnPostfixTemplate#.return" />
+            <option value="complex" />
+            <option value="copy" />
+            <option value="delete" />
+            <option value="errors.As" />
+            <option value="errors.Is" />
+            <option value="imag" />
+            <option value="nilInIfCondition" />
+            <option value="nnInIfCondition" />
+            <option value="notnilInIfCondition" />
+            <option value="panic" />
+            <option value="print" />
+            <option value="println" />
+            <option value="real" />
+            <option value="remove" />
+            <option value="reterr" />
+            <option value="rr" />
+            <option value="sort.Float64s" />
+            <option value="sort.Ints" />
+            <option value="sort.Slice" />
+            <option value="sort.Sort" />
+            <option value="sort.Strings" />
+            <option value="var" />
+            <option value="varCheckError" />
+          </set>
+        </value>
+      </disabled-templates>
+    </option>
+  </component>
+</application>

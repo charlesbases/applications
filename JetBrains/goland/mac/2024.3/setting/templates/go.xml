@@ -1,0 +1,151 @@
+<templateSet group="go">
+  <template name="ff" value="// $NAME$ $DESC$&#10;func $NAME$($VAR1$) ($VAR2$) {&#10;&#9;$END$&#10;}" description="function" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="&quot;name&quot;" alwaysStopAt="true" />
+    <variable name="DESC" expression="" defaultValue="&quot;.&quot;" alwaysStopAt="true" />
+    <variable name="VAR1" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="VAR2" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO_FILE" value="true" />
+    </context>
+  </template>
+  <template name="fm" value="// $NAME$ $DESC$&#10;func ($TYPE$) $NAME$($VAR1$) ($VAR2$) {&#10;&#9;$END$&#10;}" description="function with receiver" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="&quot;name&quot;" alwaysStopAt="true" />
+    <variable name="DESC" expression="" defaultValue="&quot;.&quot;" alwaysStopAt="true" />
+    <variable name="TYPE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="VAR1" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="VAR2" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO_FILE" value="true" />
+    </context>
+  </template>
+  <template name="type func" value="// $NAME$ $DESC$&#10;type $NAME$ func($VAR1$) ($VAR2$)" description="type func" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="&quot;name&quot;" alwaysStopAt="true" />
+    <variable name="DESC" expression="" defaultValue="&quot;.&quot;" alwaysStopAt="true" />
+    <variable name="VAR1" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="VAR2" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO_FILE" value="true" />
+    </context>
+  </template>
+  <template name="type interface" value="// $NAME$ $DESC$&#10;type $NAME$ interface {&#10;&#9;$END$&#10;}" description="type interface" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="&quot;name&quot;" alwaysStopAt="true" />
+    <variable name="DESC" expression="" defaultValue="&quot;.&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="GO_FILE" value="true" />
+    </context>
+  </template>
+  <template name="type type" value="// $NAME$ $DESC$&#10;type $NAME$ $TYPE$$END$" description="type custom" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="&quot;name&quot;" alwaysStopAt="true" />
+    <variable name="DESC" expression="" defaultValue="&quot;.&quot;" alwaysStopAt="true" />
+    <variable name="TYPE" expression="" defaultValue="&quot;struct{}&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="GO_FILE" value="true" />
+    </context>
+  </template>
+  <template name="err" value="if $ERR$ != nil {&#10;    $END$&#10;}" description="if error" toReformat="true" toShortenFQNames="true">
+    <variable name="ERR" expression="errorVariable()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="errr" value="if $EXPR$; $ERR$ {&#10;    $END$&#10;}" description="if error" toReformat="true" toShortenFQNames="true">
+    <variable name="EXPR" expression="" defaultValue="&quot;err := recover()&quot;" alwaysStopAt="true" />
+    <variable name="ERR" expression="" defaultValue="&quot;err != nil&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="GO_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="errf" value="fmt.Errorf($END$)" description="errors.Errorf" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="GO_EXPRESSION" value="true" />
+    </context>
+  </template>
+  <template name="errn" value="errors.New($END$)" description="errors.New" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="GO_EXPRESSION" value="true" />
+    </context>
+  </template>
+  <template name="pf" value="fmt.Printf(&quot;$FORMAT$&quot;, $END$)" description="fmt.Printf" toReformat="false" toShortenFQNames="true">
+    <variable name="FORMAT" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="pl" value="fmt.Println($END$)" description="fmt.Println" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="GO_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="inspect" value="var _ $INF$ = (*$INP$$END$)(nil)" description="interface inspect" toReformat="false" toShortenFQNames="true">
+    <variable name="INF" expression="" defaultValue="&quot;int&quot;" alwaysStopAt="true" />
+    <variable name="INP" expression="" defaultValue="&quot;interface{}&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="GO_FILE" value="true" />
+    </context>
+  </template>
+  <template name="spf" value="fmt.Sprintf(&quot;$FORMAT$&quot;, $END$)" description="fmt.Sprintf" toReformat="false" toShortenFQNames="true">
+    <variable name="FORMAT" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO_EXPRESSION" value="true" />
+    </context>
+  </template>
+  <template name="mc" value="make(chan $TYPE$$CACHE$)" description="chan" toReformat="false" toShortenFQNames="true">
+    <variable name="TYPE" expression="" defaultValue="&quot;struct{}&quot;" alwaysStopAt="true" />
+    <variable name="CACHE" expression="" defaultValue="&quot;, 1&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="GO_EXPRESSION" value="true" />
+    </context>
+  </template>
+  <template name="mm" value="make(map[$KEY$]$VAL$)" description="map" toReformat="false" toShortenFQNames="true">
+    <variable name="KEY" expression="" defaultValue="&quot;int&quot;" alwaysStopAt="true" />
+    <variable name="VAL" expression="" defaultValue="&quot;int&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="GO_EXPRESSION" value="true" />
+    </context>
+  </template>
+  <template name="ms" value="make([]$VAR$, $LEN$, $CAP$)" description="slice" toReformat="false" toShortenFQNames="true">
+    <variable name="VAR" expression="" defaultValue="&quot;int&quot;" alwaysStopAt="true" />
+    <variable name="LEN" expression="" defaultValue="&quot;0&quot;" alwaysStopAt="true" />
+    <variable name="CAP" expression="" defaultValue="&quot;0&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="GO_EXPRESSION" value="true" />
+    </context>
+  </template>
+  <template name="fors" value="for {&#10;&#9;select {&#10;&#9;case $EXPR$:&#10;&#9;    $END$&#10;&#9;}&#10;}" description="for select" toReformat="true" toShortenFQNames="true">
+    <variable name="EXPR" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name=".generate" value="//go:generate $END$&#10;" description="go:generate" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="GO_FILE" value="true" />
+    </context>
+  </template>
+  <template name=".deprecated" value="// Deprecated: $MESS$" description="deprecated" toReformat="true" toShortenFQNames="true">
+    <variable name="MESS" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO_FILE" value="true" />
+    </context>
+  </template>
+  <template name=".build" value="//go:build $TAG$&#10;// +build $TAG$" description="go:build" toReformat="false" toShortenFQNames="true">
+    <variable name="TAG" expression="" defaultValue="&quot;release&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="GO_FILE" value="true" />
+    </context>
+  </template>
+  <template name="forr" value="for $VAL$ := range $VAR$ {&#10;    $END$&#10;}" description="for range" toReformat="true" toShortenFQNames="true">
+    <variable name="VAL" expression="" defaultValue="&quot;k, v&quot;" alwaysStopAt="true" />
+    <variable name="VAR" expression="" defaultValue="&quot;[]int{}&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="GO_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="fori" value="for $VAR$ := 0; $VAR$ &lt; $NUMBER$; $VAR$++ {&#10;    $END$&#10;}" description="for" toReformat="true" toShortenFQNames="true">
+    <variable name="VAR" expression="" defaultValue="&quot;i&quot;" alwaysStopAt="true" />
+    <variable name="NUMBER" expression="lineNumber()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO_STATEMENT" value="true" />
+    </context>
+  </template>
+</templateSet>

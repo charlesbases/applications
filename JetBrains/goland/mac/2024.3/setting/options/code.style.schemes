@@ -1,0 +1,54 @@
+<application>
+  <component name="CodeStyleSettingsManager">
+    <option name="PER_PROJECT_SETTINGS">
+      <value version="173">
+        <option name="AUTODETECT_INDENTS" value="false" />
+        <option name="LINE_SEPARATOR" value="&#10;" />
+        <GoCodeStyleSettings>
+          <option name="REMOVE_REDUNDANT_IMPORT_ALIASES" value="true" />
+          <option name="ADD_LEADING_SPACE_TO_COMMENTS" value="true" />
+          <option name="RUN_GO_FMT_ON_REFORMAT" value="false" />
+          <option name="IMPORT_SORTING" value="GOIMPORTS" />
+          <option name="MOVE_ALL_IMPORTS_IN_ONE_DECLARATION" value="true" />
+          <option name="MOVE_ALL_STDLIB_IMPORTS_IN_ONE_GROUP" value="true" />
+          <option name="GROUP_STDLIB_IMPORTS" value="true" />
+          <option name="CREATE_LOCAL_GROUP" value="true" />
+          <option name="LOCAL_PACKAGE_PREFIXES" />
+        </GoCodeStyleSettings>
+        <codeStyleSettings language="HTML">
+          <indentOptions>
+            <option name="CONTINUATION_INDENT_SIZE" value="4" />
+          </indentOptions>
+        </codeStyleSettings>
+        <codeStyleSettings language="JSON">
+          <indentOptions>
+            <option name="CONTINUATION_INDENT_SIZE" value="2" />
+            <option name="TAB_SIZE" value="2" />
+          </indentOptions>
+        </codeStyleSettings>
+        <codeStyleSettings language="Makefile">
+          <indentOptions>
+            <option name="INDENT_SIZE" value="2" />
+            <option name="TAB_SIZE" value="2" />
+          </indentOptions>
+        </codeStyleSettings>
+        <codeStyleSettings language="XML">
+          <indentOptions>
+            <option name="CONTINUATION_INDENT_SIZE" value="4" />
+          </indentOptions>
+        </codeStyleSettings>
+        <codeStyleSettings language="protobuf">
+          <indentOptions>
+            <option name="CONTINUATION_INDENT_SIZE" value="2" />
+          </indentOptions>
+        </codeStyleSettings>
+        <codeStyleSettings language="prototext">
+          <indentOptions>
+            <option name="CONTINUATION_INDENT_SIZE" value="2" />
+          </indentOptions>
+        </codeStyleSettings>
+      </value>
+    </option>
+    <option name="PREFERRED_PROJECT_CODE_STYLE" value="Default" />
+  </component>
+</application>

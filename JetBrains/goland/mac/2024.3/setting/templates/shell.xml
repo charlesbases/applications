@@ -1,0 +1,61 @@
+<templateSet group="shell">
+  <template name=".init" value="#!/usr/bin/env $SHELL$&#10;&#10;$END$" description="shell env" toReformat="false" toShortenFQNames="true">
+    <variable name="SHELL" expression="" defaultValue="&quot;bash&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="SHELL_SCRIPT" value="true" />
+    </context>
+  </template>
+  <template name=".ff" value="$NAME$() {&#10;  $END$&#10;}" description="function" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="&quot;foo&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="SHELL_SCRIPT" value="true" />
+    </context>
+  </template>
+  <template name=".if" value="if [ $COND$ ]; then&#10;  $END$&#10;fi" description="if ... fi" toReformat="false" toShortenFQNames="true">
+    <variable name="COND" expression="" defaultValue="&quot;true&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="SHELL_SCRIPT" value="true" />
+    </context>
+  </template>
+  <template name=".null" value="&amp;&gt;/dev/null $END$" description="&amp;&gt;/dev/null" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="SHELL_SCRIPT" value="true" />
+    </context>
+  </template>
+  <template name=".forr" value="for $ITEM$ in $COLLECTION$; do&#10;  $END$&#10;done" description="for range" toReformat="false" toShortenFQNames="true">
+    <variable name="ITEM" expression="" defaultValue="&quot;i&quot;" alwaysStopAt="true" />
+    <variable name="COLLECTION" expression="" defaultValue="&quot;${v[@]}&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="SHELL_SCRIPT" value="true" />
+    </context>
+  </template>
+  <template name=".getopts" value="while getopts &quot;:$OPTS$&quot; opt; do&#10;  case $opt in&#10;    $DEMO$&#10;  esac&#10;done&#10;shift $(($OPTIND - 1))" description="getopts ... case" toReformat="false" toShortenFQNames="true">
+    <variable name="OPTS" expression="" defaultValue="&quot;h&quot;" alwaysStopAt="true" />
+    <variable name="DEMO" expression="" defaultValue="&quot;?)\n      exit\n    ;;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="SHELL_SCRIPT" value="true" />
+    </context>
+  </template>
+  <template name=".select" value="PS3=&quot;$PROMPT$&quot; &amp;&amp; select opt in $OPTS$; do&#10;  case $opt in&#10;    $DEMO$&#10;  esac&#10;done" description="select ... case" toReformat="false" toShortenFQNames="true">
+    <variable name="PROMPT" expression="" defaultValue="&quot;options: &quot;" alwaysStopAt="true" />
+    <variable name="OPTS" expression="" defaultValue="&quot;*&quot;" alwaysStopAt="true" />
+    <variable name="DEMO" expression="" defaultValue="&quot;?)\n      exit\n    ;;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="SHELL_SCRIPT" value="true" />
+    </context>
+  </template>
+  <template name=".opt" value="$OPT$)&#10;  $OPER$&#10;;;" description="opt in case" toReformat="false" toShortenFQNames="true">
+    <variable name="OPT" expression="" defaultValue="&quot;*&quot;" alwaysStopAt="true" />
+    <variable name="OPER" expression="" defaultValue="&quot;exit&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="SHELL_SCRIPT" value="true" />
+    </context>
+  </template>
+  <template name=".case" value="case $$$OPT$ in&#10;  $DEMO$&#10;esac&#10;" description="case ... in" toReformat="false" toShortenFQNames="true">
+    <variable name="OPT" expression="" defaultValue="&quot;1&quot;" alwaysStopAt="true" />
+    <variable name="DEMO" expression="" defaultValue="&quot;?)\n    exit\n  ;;&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="SHELL_SCRIPT" value="true" />
+    </context>
+  </template>
+</templateSet>

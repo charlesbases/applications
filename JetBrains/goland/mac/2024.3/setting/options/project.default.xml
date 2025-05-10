@@ -1,0 +1,96 @@
+<application>
+  <component name="ProjectManager">
+    <defaultProject>
+      <component name="CommitMessageInspectionProfile">
+        <profile version="1.0">
+          <inspection_tool class="CommitMessageSpellChecking" enabled="false" level="TYPO" enabled_by_default="false" />
+        </profile>
+      </component>
+      <component name="GoVcsConfiguration">
+        <option name="GO_FMT" value="false" />
+      </component>
+      <component name="InspectionProjectProfileManager">
+        <option name="PROJECT_PROFILE" value="Default" />
+        <option name="USE_PROJECT_PROFILE" value="false" />
+        <version value="1.0" />
+      </component>
+      <component name="OptimizeOnSaveOptions">
+        <option name="myRunOnSave" value="true" />
+      </component>
+      <component name="ProjectDictionaryState">
+        <dictionary name="sun" />
+      </component>
+      <component name="ProjectInspectionProfilesVisibleTreeState">
+        <entry key="Project Default">
+          <profile-state>
+            <selected-state>
+              <State>
+                <id>User defined</id>
+              </State>
+            </selected-state>
+          </profile-state>
+        </entry>
+      </component>
+      <component name="ProjectLevelVcsManager">
+        <ConfirmationsSetting value="2" id="Add" />
+        <ConfirmationsSetting value="2" id="Remove" />
+      </component>
+      <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "go.import.settings.migrated": "true",
+    "settings.editor.selected.configurable": "preferences.intentionPowerPack"
+  }
+}]]></component>
+      <component name="ReaderModeSettings">
+        <option name="enabled" value="false" />
+      </component>
+      <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="项目级" UseSingleDictionary="false" transferred="false" />
+      <component name="VcsDirectoryMappings" defaultProject="true" />
+      <component name="VcsManagerConfiguration">
+        <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+        <option name="MAXIMUM_HISTORY_ROWS" value="1310" />
+        <option name="NON_MODAL_COMMIT_POSTPONE_SLOW_CHECKS" value="false" />
+      </component>
+      <component name="VgoProject">
+        <auto-vendoring-mode>false</auto-vendoring-mode>
+      </component>
+      <component name="WindowStateProjectService">
+        <state x="562" y="223" key="#Go" timestamp="1746949784643">
+          <screen x="0" y="38" width="1728" height="1026" />
+        </state>
+        <state x="562" y="223" key="#Go/0.38.1728.1026" timestamp="1746949784643" />
+        <state x="652" y="196" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1746939143307">
+          <screen x="0" y="38" width="1728" height="1026" />
+        </state>
+        <state x="652" y="196" key="#com.intellij.ide.macro.MacrosDialog/0.38.1728.1026" timestamp="1746939143307" />
+        <state x="601" y="230" key="EditFileWatcherDialog" timestamp="1746949742394">
+          <screen x="0" y="38" width="1728" height="1026" />
+        </state>
+        <state x="601" y="230" key="EditFileWatcherDialog/0.38.1728.1026" timestamp="1746949742394" />
+        <state x="592" y="238" key="EnvironmentVariablesDialog" timestamp="1747268080099">
+          <screen x="0" y="38" width="1728" height="1026" />
+        </state>
+        <state x="592" y="238" key="EnvironmentVariablesDialog/0.38.1728.1026" timestamp="1747268080099" />
+        <state x="381" y="132" key="SettingsEditor" timestamp="1747268140735">
+          <screen x="0" y="38" width="1728" height="1026" />
+        </state>
+        <state x="381" y="132" key="SettingsEditor/0.38.1728.1026" timestamp="1747268140735" />
+      </component>
+      <component name="masterDetails">
+        <states>
+          <state key="ScopeChooserConfigurable.UI">
+            <settings>
+              <splitter-proportions>
+                <option name="proportions">
+                  <list>
+                    <option value="0.2" />
+                  </list>
+                </option>
+              </splitter-proportions>
+            </settings>
+          </state>
+        </states>
+      </component>
+    </defaultProject>
+  </component>
+</application>

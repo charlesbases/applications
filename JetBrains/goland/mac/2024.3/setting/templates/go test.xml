@@ -1,0 +1,21 @@
+<templateSet group="go test">
+  <template name="test" value="func Test$NAME$(t *testing.T) {&#10;&#9;$END$&#10;}" description="go test" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="capitalize(substringBefore(fileNameWithoutExtension(), &quot;_&quot;))" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO_FILE" value="true" />
+    </context>
+  </template>
+  <template name="pprof" value="//go:generate go test -run Benchmark$NAME$ -test.bench=Benchmark$NAME$ -test.benchmem -$TYPE$profile=$TYPE$.out .&#10;//go:generate go tool pprof -http :8080 $TYPE$.out$END$" description="go tool pprof" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="capitalize(substringBefore(fileNameWithoutExtension(), &quot;_&quot;))" defaultValue="" alwaysStopAt="true" />
+    <variable name="TYPE" expression="" defaultValue="&quot;mem&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="GO_FILE" value="true" />
+    </context>
+  </template>
+  <template name="bench" value="func Benchmark$NAME$(b *testing.B) {&#10;&#9;var bench = func(f func()) {&#10;&#9;&#9;b.ResetTimer()&#10;&#9;&#9;for i := 0; i &lt; b.N; i++ {&#10;&#9;&#9;&#9;f()&#10;&#9;&#9;}&#10;&#9;&#9;b.StopTimer()&#9;&#10;&#9;}&#10;&#10;&#9;$END$&#10;}" description="go benchmark" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="capitalize(substringBefore(fileNameWithoutExtension(), &quot;_&quot;))" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO_FILE" value="true" />
+    </context>
+  </template>
+</templateSet>

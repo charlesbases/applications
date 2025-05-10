@@ -1,0 +1,55 @@
+<application>
+  <component name="CodeInsightSettings">
+    <option name="PARAMETER_INFO_DELAY" value="500" />
+    <option name="AUTO_POPUP_JAVADOC_INFO" value="true" />
+    <option name="CLOSE_COMMENT_ON_ENTER" value="false" />
+    <option name="SMART_END_ACTION" value="false" />
+  </component>
+  <component name="CodeVisionSettings">
+    <option name="codeVisionGroupToPosition">
+      <map>
+        <entry key="go.implement.interface" value="Default" />
+        <entry key="inheritors" value="Default" />
+        <entry key="references" value="Default" />
+        <entry key="rename" value="Default" />
+        <entry key="vcs.code.vision" value="Default" />
+        <entry key="vgo.update.dependencies" value="Default" />
+      </map>
+    </option>
+    <option name="defaultPosition" value="Right" />
+    <option name="disabledCodeVisionProviderIds">
+      <set>
+        <option value="go.implement.interface" />
+        <option value="inheritors" />
+        <option value="references" />
+        <option value="rename" />
+        <option value="vcs.code.vision" />
+        <option value="vgo.update.dependencies" />
+      </set>
+    </option>
+    <option name="enabled" value="false" />
+  </component>
+  <component name="EditorSettings">
+    <option name="languageBreadcrumbsMap">
+      <map>
+        <entry key="protobuf" value="true" />
+      </map>
+    </option>
+    <option name="STRIP_TRAILING_SPACES" value="Whole" />
+    <option name="IS_ENSURE_NEWLINE_AT_EOF" value="true" />
+    <option name="REMOVE_TRAILING_BLANK_LINES" value="true" />
+    <option name="SHOW_INTENTION_BULB" value="false" />
+    <option name="IS_RIGHT_MARGIN_SHOWN" value="false" />
+    <option name="SHOW_BREADCRUMBS" value="false" />
+    <option name="SHOW_INTENTION_PREVIEW" value="false" />
+    <option name="SMART_HOME" value="false" />
+    <option name="IS_INDENT_GUIDES_SHOWN" value="false" />
+    <option name="IS_DND_ENABLED" value="false" />
+    <option name="IS_MOUSE_CLICK_SELECTION_HONORS_CAMEL_WORDS" value="false" />
+    <option name="ADD_CARETS_ON_DOUBLE_CTRL" value="false" />
+    <option name="KEEP_TRAILING_SPACE_ON_CARET_LINE" value="false" />
+  </component>
+  <component name="InlayHintsSettings">
+    <option name="lastViewedProviderKeyId" value="" />
+  </component>
+</application>

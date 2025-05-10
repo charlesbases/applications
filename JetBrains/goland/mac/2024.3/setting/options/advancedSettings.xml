@@ -1,0 +1,11 @@
+<application>
+  <component name="AdvancedSettings">
+    <option name="settings">
+      <map>
+        <entry key="go.automatic.goproxy.switch" value="false" />
+        <entry key="ide.ui.native.file.chooser" value="true" />
+        <entry key="terminal.buffer.max.lines.count" value="100" />
+      </map>
+    </option>
+  </component>
+</application>
