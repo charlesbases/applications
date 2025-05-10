@@ -520,9 +520,17 @@ bash ./jetbrains.sh; rm -r jetbrains.sh
 
 
 
-##### [2024.3](https://download-cdn.jetbrains.com/go/goland-2024.3.3.exe)
+##### [2024.3](https://download-cdn.jetbrains.com/go/goland-2024.3.5.exe)
 
 ```shell
+application="goland"
+application_camel="GoLand"
+application_version="2024.3.5"
+application_version_short="2024.3"
+application_installation_home="D:\JetBrains\\$application"
+application_download_url="https://download-cdn.jetbrains.com/go/goland-2024.3.5.exe"
+
+
 cat > install.bat << EOF
 @echo off
 ::echo param[0] = %0
@@ -530,55 +538,63 @@ cat > install.bat << EOF
 start /wait "" %1
 EOF
 
-cat > jetbrains-goland.sh << "EOF"
+cat > jetbrains.sh << EOF
 #!/bin/bash
 
-version=2024.3.4
-version_short=2024.3
-install_home="D:\JetBrains\goland"
 
 set -e
 
-if [ ! -d "$install_home" ]; then
+
+if [ ! -d "$application_installation_home" ]; then
   # download
-  echo -e "\033[32mgoland $version downloading ...\033[0m"
-  curl -L "https://download.jetbrains.com/go/goland-$version.exe" --output goland-$version.exe
+  echo -e "\033[32m$application $application_version downloading ...\033[0m"
+  curl -L "$application_download_url" --output $application-$application_version.exe
 
   # install
   echo -e "\033[32mwait for the installation to complete ...\033[0m"
-  ./install.bat "goland-$version.exe"
+  ./install.bat "$application-$application_version.exe"
 
   # clean
-  rm -r goland-$version.exe
+  rm -r $application-$application_version.exe
 fi
 
-# dlv update
-echo -e "\033[32mgithub.com/go-delve/delve/cmd/dlv@latest downloading ...\033[0m"
-go install github.com/go-delve/delve/cmd/dlv@latest
-mv $GOPATH/bin/dlv.exe "$install_home\plugins\go-plugin\lib\dlv\windows"
 
 # configure
-data="$APPDATA\JetBrains\GoLand$version_short"
+data="$APPDATA\JetBrains\\$application_camel$application_version_short"
 
-if [ -d "$data" ]; then rm -rf $data; fi
-mkdir -p "$data"
+
+if [ -d "\$data" ]; then rm -rf \$data; fi
+mkdir -p "\$data"
+
 
 # settings
-echo -e "\033[32mgoland setting downloading ...\033[0m"
+echo -e "\033[32m$application setting downloading ...\033[0m"
 
-curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/goland/win/$version_short/setting.zip --output setting.zip
-unzip -o -q setting.zip -d $data
+
+curl -L https://raw.githubusercontent.com/charlesbases/applications/master/JetBrains/$application/win/$application_version_short/setting.zip --output setting.zip
+unzip -o -q setting.zip -d \$data
+
+
+# dlv update
+# echo -e "\033[32mgithub.com/go-delve/delve/cmd/dlv@latest downloading ...\033[0m"
+# go install github.com/go-delve/delve/cmd/dlv@latest
+# mv $GOPATH/bin/dlv.exe "$application_installation_home\plugins\go-plugin\lib\dlv\windows"
+
 
 # alias
-echo "alias goland='start \"$install_home\bin\goland64.exe\"'" >> /etc/profile.d/$USERNAME.sh
+echo "alias $application='start \"$application_installation_home\bin\\${application}64.exe\"'" >> /etc/profile.d/$USERNAME.sh
+
 
 # clean
 rm -r install.bat setting.zip
 
-echo -e "\033[32mgoland $version install complete\033[0m"
+
+echo -e "\033[32m$application $application_version_short install complete\033[0m"
 EOF
 
-bash ./jetbrains-goland.sh; rm -r jetbrains-goland.sh
+
+bash ./jetbrains.sh; rm -r jetbrains.sh
+
 
 ```
 
