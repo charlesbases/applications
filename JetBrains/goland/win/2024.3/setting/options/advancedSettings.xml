@@ -1,0 +1,9 @@
+<application>
+  <component name="AdvancedSettings">
+    <option name="settings">
+      <map>
+        <entry key="go.automatic.goproxy.switch" value="false" />
+      </map>
+    </option>
+  </component>
+</application>

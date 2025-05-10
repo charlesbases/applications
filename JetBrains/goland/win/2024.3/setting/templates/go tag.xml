@@ -1,0 +1,16 @@
+<templateSet group="go tag">
+  <template name="tag camelCase" value="`$KEY$:&quot;$VAL$&quot;`$END$" description="camelCase" toReformat="false" toShortenFQNames="true">
+    <variable name="KEY" expression="" defaultValue="&quot;json&quot;" alwaysStopAt="true" />
+    <variable name="VAL" expression="camelCase(fieldName())" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO_TAG" value="true" />
+    </context>
+  </template>
+  <template name="tag snakeCase" value="`$KEY$:&quot;$VAL$&quot;`$END$" description="snakeCase" toReformat="false" toShortenFQNames="true">
+    <variable name="KEY" expression="" defaultValue="&quot;json&quot;" alwaysStopAt="true" />
+    <variable name="VAL" expression="snakeCase(fieldName())" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO_TAG" value="true" />
+    </context>
+  </template>
+</templateSet>

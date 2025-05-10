@@ -1,0 +1,74 @@
+<application>
+  <component name="ProjectManager">
+    <defaultProject>
+      <component name="CommitMessageInspectionProfile">
+        <profile version="1.0">
+          <inspection_tool class="CommitMessageSpellChecking" enabled="false" level="TYPO" enabled_by_default="false" />
+        </profile>
+      </component>
+      <component name="GoVcsConfiguration">
+        <option name="GO_FMT" value="false" />
+      </component>
+      <component name="InspectionProjectProfileManager">
+        <option name="PROJECT_PROFILE" value="Default" />
+        <option name="USE_PROJECT_PROFILE" value="false" />
+        <version value="1.0" />
+      </component>
+      <component name="OptimizeOnSaveOptions">
+        <option name="myRunOnSave" value="true" />
+      </component>
+      <component name="ProjectDictionaryState">
+        <dictionary name="Administrator" />
+      </component>
+      <component name="ProjectInspectionProfilesVisibleTreeState">
+        <entry key="Project Default">
+          <profile-state>
+            <selected-state>
+              <State>
+                <id>User defined</id>
+              </State>
+            </selected-state>
+          </profile-state>
+        </entry>
+      </component>
+      <component name="ProjectLevelVcsManager">
+        <ConfirmationsSetting value="2" id="Add" />
+        <ConfirmationsSetting value="2" id="Remove" />
+      </component>
+      <component name="ProjectTasksOptions">
+        <enabled-global>
+          <option value="goimports" />
+        </enabled-global>
+      </component>
+      <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "go.import.settings.migrated": "true",
+    "settings.editor.selected.configurable": "go"
+  }
+}]]></component>
+      <component name="VcsDirectoryMappings" defaultProject="true" />
+      <component name="VcsManagerConfiguration">
+        <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+        <option name="NON_MODAL_COMMIT_POSTPONE_SLOW_CHECKS" value="false" />
+      </component>
+      <component name="WindowStateProjectService">
+        <state x="803" y="362" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1746801090880">
+          <screen x="0" y="0" width="1920" height="1040" />
+        </state>
+        <state x="803" y="362" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/0.0.1920.1040" timestamp="1746801090880" />
+        <state x="1149" y="265" key="EditFileWatcherDialog" timestamp="1746801350724">
+          <screen x="0" y="0" width="1920" height="1040" />
+        </state>
+        <state x="1149" y="265" key="EditFileWatcherDialog/0.0.1920.1040" timestamp="1746801350724" />
+        <state x="1170" y="274" key="EnvironmentVariablesDialog" timestamp="1746801348781">
+          <screen x="0" y="0" width="1920" height="1040" />
+        </state>
+        <state x="1170" y="274" key="EnvironmentVariablesDialog/0.0.1920.1040" timestamp="1746801348781" />
+        <state x="908" y="16" width="1012" height="1016" key="SettingsEditor" timestamp="1746801680473">
+          <screen x="0" y="0" width="1920" height="1040" />
+        </state>
+        <state x="908" y="16" width="1012" height="1016" key="SettingsEditor/0.0.1920.1040" timestamp="1746801680473" />
+      </component>
+    </defaultProject>
+  </component>
+</application>

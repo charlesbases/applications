@@ -1,0 +1,7 @@
+<application>
+  <component name="GoFoldingSettings">
+    <option name="isOneLineReturnFunctions" value="false" />
+    <option name="isOneLineErrorHandlingBlocks" value="false" />
+    <option name="isOneLineCaseClauses" value="false" />
+  </component>
+</application>

@@ -1,0 +1,11 @@
+<application>
+  <component name="TerminalOptionsProvider">
+    <option name="myHighlightHyperlinks" value="false" />
+    <option name="myOverrideIdeShortcuts" value="false" />
+    <option name="myPasteOnMiddleMouseButton" value="false" />
+    <option name="myReportMouse" value="false" />
+    <option name="myShellPath" value="D:\local\git\bin\bash.exe --login" />
+    <option name="mySoundBell" value="false" />
+    <option name="myTabName" value="sun" />
+  </component>
+</application>

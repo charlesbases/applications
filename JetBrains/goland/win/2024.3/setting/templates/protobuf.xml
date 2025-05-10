@@ -1,0 +1,14 @@
+<templateSet group="protobuf">
+  <template name="init" value="syntax = &quot;proto3&quot;;&#10;&#10;option go_package = &quot;$VAR1$&quot;;&#10;&#10;package $VAR2$;&#10;&#10;$END$" description="init" toReformat="false" toShortenFQNames="true">
+    <variable name="VAR1" expression="" defaultValue="&quot;.;pb&quot;" alwaysStopAt="true" />
+    <variable name="VAR2" expression="" defaultValue="&quot;pb&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="PROTO" value="true" />
+      <option name="PROTO_ENUM" value="false" />
+      <option name="PROTO_EXTEND" value="false" />
+      <option name="PROTO_MESSAGE" value="false" />
+      <option name="PROTO_ONEOF" value="false" />
+      <option name="PROTO_SERVICE" value="false" />
+    </context>
+  </template>
+</templateSet>

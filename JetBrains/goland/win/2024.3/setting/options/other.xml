@@ -1,0 +1,85 @@
+<application>
+  <component name="AppInspectionProfilesVisibleTreeState">
+    <entry key="Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id>Code style issuesGo</id>
+          </State>
+          <State>
+            <id>Control flow issuesGo</id>
+          </State>
+          <State>
+            <id>Data flow analysis (experimental)Go</id>
+          </State>
+          <State>
+            <id>Declaration redundancyGo</id>
+          </State>
+          <State>
+            <id>GeneralGo</id>
+          </State>
+          <State>
+            <id>Go</id>
+          </State>
+          <State>
+            <id>Probable bugsGo</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>GoShadowedVar</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="FileEditorProviderManager">{}</component>
+  <component name="LangManager">
+    <option name="languageName" value="go" />
+  </component>
+  <component name="NotRoamableUiSettings">
+    <option name="ideAAType" value="Greyscale" />
+    <option name="editorAAType" value="Greyscale" />
+    <option name="fontFace" value="mononoki" />
+    <option name="fontSize" value="12.0" />
+    <option name="presentationModeIdeScale" value="1.75" />
+    <option name="overrideLafFonts" value="true" />
+  </component>
+  <component name="PropertyService"><![CDATA[{
+  "keyToString": {
+    "FileTemplates.SelectedTemplate": "HTML File",
+    "InstalledPluginsSearchHistory": "json",
+    "KEYMAP": "selected",
+    "LAST_EXTRACTOR_SCRIPTS_CLEANUP_VERSION/data/aggregators": "GO-243.26053.20",
+    "MarketplacePluginsSearchHistory": "json\nui",
+    "NextRunPlatformUpdateBuild": "GO-251.23774.430",
+    "NextRunPlatformUpdateSelfBuild": "GO-243.26053.20",
+    "NextRunPlatformUpdateVersion": "2025.1",
+    "PluginConfigurable.selectionTab": "1",
+    "SingleInspectionProfilePanel.VERTICAL_DIVIDER_PROPORTION": "0.39285713",
+    "ask.about.ctrl.y.shortcut.v2": "true",
+    "evlsprt3.243": "6",
+    "experimental.ui.on.first.startup": "true",
+    "experimental.ui.used.version": "243.26053.20",
+    "fileTypeChangedCounter": "2",
+    "fontSizeToResetConsole": "14.0",
+    "fontSizeToResetEditor": "14.0",
+    "migrated.non.roamable.values.from.general.settings": "true",
+    "previousColorScheme": "_@user_Dusk",
+    "registry.to.advanced.settings.migration.build": "GO-243.26053.20",
+    "settings.code.style.selected.tab.HTML": "Code Generation",
+    "settings.code.style.selected.tab.JSON": "Wrapping and Braces",
+    "settings.code.style.selected.tab.go": "Other",
+    "settings.code.style.selected.tab.yaml": "Wrapping and Braces"
+  },
+  "keyToStringList": {
+    "fileTypeDetectors": [
+      "com.intellij.ide.scratch.ScratchFileServiceImpl$Detector",
+      "com.goide.execution.testing.frameworks.gofuzz.corpus.GoFuzzCorpusFileTypeDetector"
+    ]
+  }
+}]]></component>
+  <component name="TerminalUiSettingsManager">
+    <option name="cursorShape" value="UNDERLINE" />
+  </component>
+</application>
