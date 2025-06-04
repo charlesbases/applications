@@ -10,7 +10,10 @@
 
 [core]
     editor = vim
-    autocrlf = input
+    # autocrlf = input
+    autocrlf = false
+    filemode = false
+    safecrlf = true
     compression = 0
     excludesfile = ~/.gitignore
 
