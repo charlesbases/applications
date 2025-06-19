@@ -4,6 +4,14 @@
     "actions":
     [
         {
+            "command":
+            {
+                "action": "splitPane",
+                "split": "up"
+            },
+            "keys": "alt+up"
+        },
+        {
             "command": "unbound",
             "keys": "ctrl+shift+tab"
         },
@@ -74,18 +82,6 @@
         {
             "command": "unbound",
             "keys": "ctrl+shift+m"
-        },
-        {
-            "command": "unbound",
-            "keys": "alt+up"
-        },
-        {
-            "command": "unbound",
-            "keys": "alt+down"
-        },
-        {
-            "command": "unbound",
-            "keys": "alt+left"
         },
         {
             "command": "unbound",
@@ -221,10 +217,6 @@
         },
         {
             "command": "unbound",
-            "keys": "alt+shift+down"
-        },
-        {
-            "command": "unbound",
             "keys": "alt+shift+right"
         },
         {
@@ -245,15 +237,23 @@
         },
         {
             "command": "unbound",
-            "keys": "alt+right"
-        },
-        {
-            "command": "unbound",
             "keys": "alt+shift+plus"
         },
         {
             "command": "unbound",
             "keys": "ctrl+shift+t"
+        },
+        {
+            "command": "unbound",
+            "keys": "alt+shift+down"
+        },
+        {
+            "command":
+            {
+                "action": "splitPane",
+                "split": "down"
+            },
+            "keys": "alt+down"
         },
         {
             "command":
@@ -276,12 +276,36 @@
             "keys": "ctrl+f"
         },
         {
+            "command": "duplicateTab",
+            "keys": "ctrl+n"
+        },
+        {
             "command": "paste",
             "keys": "ctrl+v"
         },
         {
-            "command": "duplicateTab",
-            "keys": "ctrl+n"
+            "command":
+            {
+                "action": "splitPane",
+                "split": "left"
+            },
+            "keys": "alt+left"
+        },
+        {
+            "command":
+            {
+                "action": "clearBuffer",
+                "clear": "all"
+            },
+            "keys": "ctrl+l"
+        },
+        {
+            "command":
+            {
+                "action": "splitPane",
+                "split": "right"
+            },
+            "keys": "alt+right"
         }
     ],
     "confirmCloseAllTabs": false,
@@ -414,27 +438,27 @@
             "yellow": "#C19C00"
         },
         {
-            "background": "#2B303B",
-            "black": "#797E86",
-            "blue": "#47A7EB",
-            "brightBlack": "#797E86",
-            "brightBlue": "#47A7EB",
-            "brightCyan": "#5CD6AD",
-            "brightGreen": "#9ED775",
-            "brightPurple": "#E06CE0",
-            "brightRed": "#E06C6C",
-            "brightWhite": "#C0C5CE",
-            "brightYellow": "#E0C36C",
-            "cursorColor": "#E06CA0",
-            "cyan": "#5CD6AD",
-            "foreground": "#C0C5CE",
-            "green": "#9ED775",
+            "background": "#2B2F36",
+            "black": "#777D88",
+            "blue": "#61AFEF",
+            "brightBlack": "#777D88",
+            "brightBlue": "#61AFEF",
+            "brightCyan": "#4BCEB8",
+            "brightGreen": "#98C379",
+            "brightPurple": "#D666D6",
+            "brightRed": "#E06C75",
+            "brightWhite": "#C0C3C8",
+            "brightYellow": "#D6BA66",
+            "cursorColor": "#E06CAF",
+            "cyan": "#4BCEB8",
+            "foreground": "#C0C3C8",
+            "green": "#98C379",
             "name": "Moonlit",
-            "purple": "#E06CE0",
-            "red": "#E06C6C",
-            "selectionBackground": "#768099",
-            "white": "#C0C5CE",
-            "yellow": "#E0C36C"
+            "purple": "#D666D6",
+            "red": "#E06C75",
+            "selectionBackground": "#A0A0A0",
+            "white": "#C0C3C8",
+            "yellow": "#D6BA66"
         },
         {
             "background": "#282C34",
