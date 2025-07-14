@@ -107,6 +107,10 @@ alias l='ls -lhv'
 alias la='ls -alhv'
 alias open='start "" '
 
+# golint
+# go install golang.org/x/lint/golint@latest
+alias lint='find . -type f -name "*.go" | while read file; do golint $file; done'
+
 # git-for-windows
 alias gitfetch='git fetch --all --prune'
 alias gitreset='git reset --hard $(git branch --show-current)'
