@@ -245,9 +245,10 @@ ssh-keygen -t rsa -b 2048 -C "zhiming.sun" -f id_rsa
 ### golang
 
 - [git-for-windows](#git-for-windows)
-- [go 1.22](https://dl.google.com/go/go1.22.10.windows-amd64.msi)
 
+- [go 1.23.12](https://golang.google.cn/dl/go1.23.12.windows-amd64.msi)
 
+  
 
 [go_install.sh](./Scripts/win/go_install.sh)
 
@@ -525,10 +526,10 @@ bash ./jetbrains.sh; rm -r jetbrains.sh
 ```shell
 application="goland"
 application_camel="GoLand"
-application_version="2024.3.5"
+application_version="2024.3.6"
 application_version_short="2024.3"
 application_installation_home="D:\JetBrains\\$application"
-application_download_url="https://download-cdn.jetbrains.com/go/goland-2024.3.5.exe"
+application_download_url="https://download-cdn.jetbrains.com/go/goland-2024.3.6.exe"
 
 
 cat > install.bat << EOF

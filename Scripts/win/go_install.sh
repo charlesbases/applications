@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GO_VERSION="1.22.10"
+GO_VERSION="1.23.12"
 
 GOHOME="D:\local\go"
 GOHOME_LINUX="/usr/local/go" # to linux  `mklink /J D:\local\git\bin\..\opt `
@@ -14,8 +14,8 @@ GO111MODULE="on"
 
 # goland
 IDE_HOME="D:\JetBrains\goland"
-IDE_VERSION="2024.1.6"
-IDE_VERSION_SHORT="2024.1"
+IDE_VERSION="2024.3.6"
+IDE_VERSION_SHORT="2024.3"
 
 #
 environment_user="HKCU:\Environment"
