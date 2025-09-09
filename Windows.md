@@ -273,11 +273,11 @@ Remove-ItemProperty HKCU:\Environment GOPATH
 
 # 配置 Windows 环境变量
 SETX GOHOME "D:\local\go" /M
-SETX GOPATH "D:\opt\go" /M
+SETX GOPATH "D:\opt\workspace" /M
 SETX GOPROXY "https://goproxy.io,direct" /M
 SETX GOSUMDB "off" /M
 SETX GO111MODULE "on" /M
-SETX PATH "%PATH%;D:\opt\go\bin" /M
+SETX PATH "%PATH%;D:\opt\workspace\bin" /M
 ```
 
 ```shell
@@ -294,36 +294,20 @@ if [[ -n "$(grep -w "^# golang" /etc/profile.d/$USERNAME.sh)" ]]; then exit; fi
 echo '''
 # golang
 export GOHOME="/usr/local/go"
-export GOPATH="/opt/go"
+export GOPATH="/opt/workspace"
 export GOSUMDB="off"
 export GOPROXY="https://goproxy.io,direct"
 export GO111MODULE="on"
 
-alias cs="cd /opt/go/src"
+alias workspace="cd /opt/workspace/src"
 ''' >> /etc/profile.d/$USERNAME.sh
+
+source /etc/profile.d/$USERNAME.sh
+mkdir -p $GOPATH/{bin,pkg,src}
 
 EOF
 
 bash ./_go.sh; rm -r _go.sh
-```
-
-
-
-```shell
-# 配置 Git for Windows 环境变量
-cat >> /etc/profile.d/$USERNAME.sh << "EOF"
-export GOHOME="/usr/local/go"
-export GOPATH="/opt/go"
-export GOSUMDB="off"
-export GOPROXY="https://goproxy.io,direct"
-export GO111MODULE="on"
-export PATH="$PATH:/opt/go/bin"
-
-alias cs="cd /opt/go/src"
-EOF
-
-source /etc/profile.d/$USERNAME.sh
-mkdir -p $GOPATH/{bin,pkg,src}
 ```
 
 

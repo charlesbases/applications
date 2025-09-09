@@ -5,8 +5,8 @@ GO_VERSION="1.23.12"
 GOHOME="D:\local\go"
 GOHOME_LINUX="/usr/local/go" # to linux  `mklink /J D:\local\git\bin\..\opt `
 
-GOPATH="D:\opt\go"
-GOPATH_LINUX="/opt/go" # to linux
+GOPATH="D:\opt\workspace"
+GOPATH_LINUX="/opt/workspace" # to linux
 
 GOSUMDB="off"
 GOPROXY="https://goproxy.io,direct"
@@ -81,7 +81,7 @@ configure_gitforwindows() {
     cat >> /etc/profile.d/$USERNAME.sh << "EOF"
 
 # environments
-export PATH="$PATH:/opt/go/bin"
+export PATH="$PATH:/opt/workspace/bin"
 
 EOF
 
@@ -92,8 +92,6 @@ export GOPATH="$GOPATH_LINUX"
 export GOSUMDB="off"
 export GOPROXY="https://goproxy.io,direct"
 export GO111MODULE="on"
-
-alias cs="cd $GOPATH_LINUX/src"
 
 EOF
 
